@@ -1,0 +1,8 @@
+#+title: A (not yet named) Emacs config
+
+This is a simple Emacs configuration that is being created to learn more about
+Emacs and Emacs Lisp, and get an useful configuration to my workflow. That initially
+consists in:
+
+- Emacs as a Code Editor (for Web and other weird things);
+- Org-mode as my "noter workflow", with =org-roam= and other stuffs.
