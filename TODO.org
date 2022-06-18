@@ -1,0 +1,6 @@
+* Things to do
+** Packages [0/3]
+*** TODO Magit
+*** TODO Evil
+*** TODO Org-mode [0/1]
+- [ ] org-roam
