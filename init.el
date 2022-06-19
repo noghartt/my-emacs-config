@@ -28,12 +28,9 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-;;;; Installing which-key:
-(use-package which-key
-  :init
-  (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.3))
+;;;; Load some internal files:
+(load-file "keybinds.el")
+(require 'keybinds)
 
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
