@@ -16,5 +16,9 @@
   :config
   (setq which-key-idle-delay 0.3))
 
+;;;; Installing evil:
+(use-package evil
+  :init (evil-mode))
+
 (provide 'keybinds)
 ;;; keybinds.el ends here
