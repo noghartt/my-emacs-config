@@ -29,6 +29,14 @@
 
 (straight-use-package 'use-package)
 
+;;;; Installing which-key:
+(use-package which-key
+  :straight t
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3))
+
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
 
