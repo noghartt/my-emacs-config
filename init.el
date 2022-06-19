@@ -32,6 +32,13 @@
 (load-file "keybinds.el")
 (require 'keybinds)
 
+;;;; Installing helpful:
+(use-package helpful
+  :commands helpful--read-symbol
+  :hook (helpful-mode . visual-line-mode)
+  :init
+  (general-define-key [remap describe-variable] #'helpful-variable))
+
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
 
