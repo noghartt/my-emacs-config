@@ -20,5 +20,19 @@
 (use-package evil
   :init (evil-mode))
 
+;;;; Setup keybinds:
+
+;;;;; Evil keybinds:
+(general-create-definer leader-def
+  :prefix leader-key)
+
+(general-create-definer localleader-def
+  :prefix localleader-key)
+
+(leader-def
+ :states 'normal
+ :keymaps 'override
+ "h" help-map)
+
 (provide 'keybinds)
 ;;; keybinds.el ends here
