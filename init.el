@@ -42,6 +42,12 @@
 ;;;; Installing org-roam:
 (use-package org-roam)
 
+;;;; Other things:
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(blink-cursor-mode 0)
+
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
 
