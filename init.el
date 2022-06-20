@@ -39,6 +39,9 @@
   :init
   (general-define-key [remap describe-variable] #'helpful-variable))
 
+;;;; Installing org-roam:
+(use-package org-roam)
+
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
 
