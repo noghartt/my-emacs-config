@@ -18,7 +18,10 @@
 
 ;;;; Installing evil:
 (use-package evil
-  :init (evil-mode))
+  :init (evil-mode)
+  :config
+  (setq evil-default-cursor nil
+        evil-insert-state-cursor "box"))
 
 ;;;; Setup keybinds:
 
