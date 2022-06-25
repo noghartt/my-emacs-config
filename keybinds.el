@@ -18,10 +18,16 @@
 
 ;;;; Installing evil:
 (use-package evil
-  :init (evil-mode)
+  :init
+  (setq evil-want-keybinding nil)
+  (evil-mode)
   :config
-  (setq evil-default-cursor nil
-        evil-insert-state-cursor "box"))
+  (setq evil-default-cursor nil))
+
+(use-package evil-collection
+  :after evil
+  :init
+  (evil-collection-init))
 
 ;;;; Setup keybinds:
 
@@ -35,7 +41,24 @@
 (leader-def
  :states 'normal
  :keymaps 'override
- "h" help-map)
+ ":" #'execute-extended-command
+ "h" '(:keymap help-map :which-key "help")
+ "w" '(:keymap evil-window-map :which-key "window")
+ "b" '(:which-key "buffer"))
+
+(leader-def
+ :states 'normal
+ :keymaps 'override
+ :prefix (concat leader-key " b")
+ "i" #'ibuffer)
+
+;;;; Installing helpful:
+(use-package helpful
+  :commands helpful--read-symbol
+  :hook (helpful-mode . visual-line-mode)
+  :init
+  (general-define-key [remap describe-variable] #'helpful-variable
+                      [remap describe-function] #'helpful-function))
 
 (provide 'keybinds)
 ;;; keybinds.el ends here
