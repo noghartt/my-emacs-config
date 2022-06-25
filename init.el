@@ -32,21 +32,39 @@
 (load-file "keybinds.el")
 (require 'keybinds)
 
-;;;; Installing helpful:
-(use-package helpful
-  :commands helpful--read-symbol
-  :hook (helpful-mode . visual-line-mode)
-  :init
-  (general-define-key [remap describe-variable] #'helpful-variable))
+;;;;; Load org-mode configuration:
+(load-file "org.el")
+(require 'org)
 
-;;;; Installing org-roam:
-(use-package org-roam)
+;;;; Installing vertico:
+(use-package vertico
+  :init
+  (vertico-mode))
+
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;;;; Installing marginalia:
+(use-package marginalia
+  :init
+  (marginalia-mode))
 
 ;;;; Other things:
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(setq visible-bell nil)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(scroll-bar-mode -1)
 (blink-cursor-mode 0)
+
+; Add 80 columns rule indicator
+(setq-default display-fill-column-indicator 79)
+(global-display-fill-column-indicator-mode 1)
+
+; Add line number column
+(global-display-line-numbers-mode 1)
 
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
