@@ -22,7 +22,8 @@
   (setq evil-want-keybinding nil)
   (evil-mode)
   :config
-  (setq evil-default-cursor nil))
+  (setq evil-default-cursor 'box
+        evil-insert-state-cursor 'box))
 
 (use-package evil-collection
   :after evil
