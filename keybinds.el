@@ -31,15 +31,24 @@
 (general-create-definer localleader-def
   :prefix localleader-key)
 
-(leader-def
- :states 'normal
- :keymaps 'override
- ":" #'execute-extended-command
- "h" '(:keymap help-map :which-key "help")
- "w" '(:keymap evil-window-map :which-key "window")
- "b" '(:which-key "buffer"))
+;;;;; Global keybinds:
+
+; TODO: I think that could be a way to add `:which-key' keyword symbol.
+;       It would be cool, because we don't need to replicate `:wk' every
+;       time that we're using this keymap.
+(defvar my/global-files-map (make-sparse-keymap))
+(general-define-key
+ :keymaps 'my/global-files-map
+ "s" #'save-buffer
+ "f" #'find-file)
 
 (leader-def
+  :states 'normal
+  "h" '(:keymap help-map :wk "help")
+  "w" '(:keymap evil-window-map :wk "window")
+  "f" '(:keymap my/global-files-map :wk "file")
+  "m" '(:ignore t :wk "<localleader>"))
+
  :states 'normal
  :keymaps 'override
  :prefix (concat leader-key " b")
