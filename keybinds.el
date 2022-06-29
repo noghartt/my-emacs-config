@@ -49,10 +49,20 @@
   "f" '(:keymap my/global-files-map :wk "file")
   "m" '(:ignore t :wk "<localleader>"))
 
+(defvar localleader-buffer-map (make-sparse-keymap))
+(general-define-key
+ :keymaps 'localleader-buffer-map
+ :wk "buffer"
+ "b" #'eval-buffer
+ "f" #'eval-defun
+ "e" #'eval-expression
+ "s" #'eval-last-sexp
+ "r" #'eval-region)
+
+(localleader-def
  :states 'normal
- :keymaps 'override
- :prefix (concat leader-key " b")
- "i" #'ibuffer)
+ :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+ "e" '(:keymap localleader-buffer-map :wk "eval"))
 
 ;;;; Installing helpful:
 (use-package helpful
