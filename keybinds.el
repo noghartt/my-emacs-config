@@ -20,6 +20,11 @@
   (setq evil-default-cursor 'box
         evil-insert-state-cursor 'box))
 
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 ;;;; Keybinds:
 (defconst leader-key "SPC"
   "The leader prefix key for Evil.")
