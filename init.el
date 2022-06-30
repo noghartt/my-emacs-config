@@ -51,7 +51,14 @@
   (marginalia-mode))
 
 ;;;; Other things:
+(setq-default fill-column 80)
+
 (setq visible-bell nil)
+(setq hscroll-margin 2
+      hscroll-step 1
+      scroll-conservatively 101
+      scroll-margin 0
+      auto-window-vscroll nil)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
