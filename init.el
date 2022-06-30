@@ -30,11 +30,11 @@
 
 ;;;; Load some internal files:
 (load-file "keybinds.el")
-(require 'keybinds)
-
-;;;;; Load org-mode configuration:
 (load-file "org.el")
+(load-file "magit.el")
+(require 'keybinds)
 (require 'org)
+(require 'magit)
 
 ;;;; Installing vertico:
 (use-package vertico
