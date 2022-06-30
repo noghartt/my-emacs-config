@@ -50,6 +50,24 @@
   :init
   (marginalia-mode))
 
+;;;; Installing smartparens:
+(use-package smartparens
+  :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode))
+
+;;;; Installing themes:
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
+  (load-theme 'doom-plain t)
+  (doom-themes-org-config))
+
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1))
+
 ;;;; Other things:
 (setq-default fill-column 80)
 
@@ -65,6 +83,9 @@
 (tooltip-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
+
+; Add highlight on cursor line
+(global-hl-line-mode 1)
 
 ; Add 80 columns rule indicator
 (setq-default display-fill-column-indicator 79)
