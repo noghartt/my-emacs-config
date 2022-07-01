@@ -28,5 +28,7 @@
         (lambda ()
           (org-cite-insert nil))))
 
+(add-hook 'org-mode-hook 'org-indent-mode)
+
 (provide 'org)
 ;;; org.el ends here
