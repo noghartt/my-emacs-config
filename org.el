@@ -30,5 +30,20 @@
 
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+;;;; Installing elfeed:
+(use-package elfeed
+  :config
+  (setq-default elfeed-search-filter "@1-week-ago +unread"))
+
+(use-package elfeed-org
+  :after elfeed
+  :init
+  (elfeed-org))
+
+(use-package elfeed-goodies
+  :after elfeed
+  :init
+  (elfeed-goodies/setup))
+
 (provide 'org)
 ;;; org.el ends here
