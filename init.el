@@ -50,6 +50,17 @@
   :init
   (marginalia-mode))
 
+;;;; Installing company:
+(use-package company
+  :config
+  (add-hook 'company-mode-hook #'evil-normalize-keymaps)
+  (setq company-global-modes
+        '(not help-mode)
+        company-frontends
+        '(company-pseudo-tooltip-frontend)))
+
+(global-company-mode)
+
 ;;;; Installing smartparens:
 (use-package smartparens
   :ensure t
