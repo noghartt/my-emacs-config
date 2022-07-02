@@ -114,5 +114,9 @@
 
 ;;;; Reduce GC threshold:
 (setq gc-cons-threshold (* 2 1000 1000))
+;;;; Improve performance:
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      create-lockfiles nil)
 
 ;;; init.el ends here
