@@ -121,8 +121,15 @@
 ; Add line number column
 (global-display-line-numbers-mode 1)
 
-;;;; Reduce GC threshold:
-(setq gc-cons-threshold (* 2 1000 1000))
+;;;; Installing typescript-mode:
+(use-package typescript-mode
+  :after tree-sitter
+  :config
+  (define-derived-mode typescriptreact-mode typescript-mode
+    "TypeScript TSX")
+  (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescriptreact-mode))
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx)))
+
 ;;;; Improve performance:
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
