@@ -86,6 +86,15 @@
   :init
   (doom-modeline-mode 1))
 
+;;;; Installing tree-sitter:
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs
+  :after tree-sitter)
+
 ;;;; Other things:
 (setq-default fill-column 80)
 
