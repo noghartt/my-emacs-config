@@ -61,6 +61,13 @@
 
 (global-company-mode)
 
+(general-define-key
+ :keymaps 'company-mode-map
+ "C-SPC" #'company-complete-common)
+(general-define-key
+ :keymaps 'company-active-map
+ [escape] #'company-abort)
+
 ;;;; Installing smartparens:
 (use-package smartparens
   :ensure t
