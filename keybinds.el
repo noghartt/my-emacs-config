@@ -15,10 +15,7 @@
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
-  (evil-mode)
-  :config
-  (setq evil-default-cursor 'box
-        evil-insert-state-cursor 'box))
+  (evil-mode))
 
 (use-package evil-collection
   :after evil
