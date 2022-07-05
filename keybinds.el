@@ -44,6 +44,16 @@
  "s" #'save-buffer
  "f" #'find-file)
 
+; TODO: I don't know what is a better name to this keymap.
+(defvar my/global-buffer-map (make-sparse-keymap))
+(general-define-key
+ :keymaps 'my/global-buffer-map
+ "i" #'ibuffer
+ "p" #'previous-buffer
+ "n" #'next-buffer
+ "kb" #'kill-buffer
+ "kc" #'kill-current-buffer)
+
 (leader-def
   :states 'normal
   "h" '(:keymap help-map :wk "help")
@@ -51,6 +61,7 @@
   "f" '(:keymap my/global-files-map :wk "file")
   "g" '(:ignore t :wk "git/github")
   "m" '(:ignore t :wk "<localleader>"))
+  "b" '(:keymap my/global-buffer-map :wk "buffer")
 
 (defvar localleader-buffer-map (make-sparse-keymap))
 (general-define-key
