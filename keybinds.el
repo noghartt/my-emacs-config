@@ -60,10 +60,11 @@
   "w" '(:keymap evil-window-map :wk "window")
   "f" '(:keymap my/global-files-map :wk "file")
   "g" '(:ignore t :wk "git/github")
-  "m" '(:ignore t :wk "<localleader>"))
   "m" '(:ignore t :wk "<localleader>")
   "n" '(:ignore t :wk "notes")
   "b" '(:keymap my/global-buffer-map :wk "buffer")
+  ; TODO: If "o" prefix increase size, we should put it on a keymap.
+  "op" #'dired-jump)
 
 (defvar localleader-buffer-map (make-sparse-keymap))
 (general-define-key
