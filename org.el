@@ -28,7 +28,18 @@
         (lambda ()
           (org-cite-insert nil))))
 
-(add-hook 'org-mode-hook 'org-indent-mode)
+;;;; Prettify org-mode:
+(use-package org-superstar
+  :after org-mode
+  :hook
+  (org-mode . org-supertar-mode))
+
+(use-package org-fancy-priorities
+  :hook
+  (org-mode . org-fancy-priorities-mode))
+
+(add-to-list 'org-mode-hook (lambda () (org-indent-mode t)))
+
 
 ;;;; Installing elfeed:
 (use-package elfeed
