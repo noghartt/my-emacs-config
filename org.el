@@ -40,6 +40,9 @@
 
 (add-to-list 'org-mode-hook (lambda () (org-indent-mode t)))
 
+(setq org-directory "~/org-backup"
+      org-roam-directory org-directory
+      org-default-notes-file (concat org-directory "/inbox.org"))
 
 ;;;; Installing elfeed:
 (use-package elfeed
