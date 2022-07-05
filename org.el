@@ -44,6 +44,16 @@
       org-roam-directory org-directory
       org-default-notes-file (concat org-directory "/inbox.org"))
 
+(setq org-capture-templates
+      '(("i" "Remember" entry (file+headline "inbox.org"
+                                             "Tasks")
+         "** TODO %?\n"
+         :unarrowed t)
+        ("n" "Notebook" entry (file+headline "inbox.org"
+                                             "Notebook")
+         "** %^{Notebook title}\n%?"
+         :unarrowed t)))
+
 ;;;; Installing elfeed:
 (use-package elfeed
   :config
