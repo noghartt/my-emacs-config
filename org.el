@@ -54,6 +54,24 @@
          "** %^{Notebook title}\n%?"
          :unarrowed t)))
 
+;;;; Set keybinds:
+(defvar my/global-org-roam-mode-map (make-sparse-keymap))
+(general-define-key
+ :keymaps 'my/global-org-roam-mode-map
+ "n" #'org-roam-capture
+ "t" #'org-roam-buffer-toggle
+ "f" #'org-roam-node-find)
+
+(defvar my/global-org-mode-map (make-sparse-keymap))
+(general-define-key
+ :keymaps 'my/global-org-mode-map
+ "n" #'org-capture
+ "r" my/global-org-roam-mode-map) ; TODO: Add `:wk' in this map as "roam"
+
+(leader-def
+ :states 'normal
+ "n" my/global-org-mode-map)
+
 ;;;; Installing elfeed:
 (use-package elfeed
   :config
