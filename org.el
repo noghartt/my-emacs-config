@@ -45,11 +45,13 @@
       org-default-notes-file (concat org-directory "/inbox.org"))
 
 (setq org-capture-templates
-      '(("i" "Remember" entry (file+headline "inbox.org"
+      '(("i" "Inbox")
+        ("ii" "Tasks" entry (file+headline "inbox.org"
                                              "Tasks")
          "** TODO %?\n"
+         :prepend t
          :unarrowed t)
-        ("n" "Notebook" entry (file+headline "inbox.org"
+        ("in" "Notebook" entry (file+headline "inbox.org"
                                              "Notebook")
          "** %^{Notebook title}\n%?"
          :unarrowed t)))
