@@ -10,6 +10,8 @@
                                                          "#+title: ${title}\n")
                                       :unarrowed t))))
 
+(require 'org-roam-protocol)
+
 (use-package org-roam-ui
   :straight
   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
@@ -40,9 +42,15 @@
 
 (add-to-list 'org-mode-hook (lambda () (org-indent-mode t)))
 
+(setq org-modules '(org-habit
+                    org-protocol))
+
+(eval-after-load 'org
+  '(org-load-modules-maybe t))
+
 (setq org-directory "~/org-backup"
-      org-roam-directory org-directory
-      org-default-notes-file (concat org-directory "/inbox.org"))
+      org-default-notes-file (concat org-directory "/inbox.org")
+      org-roam-directory (concat org-directory "/notes"))
 
 (setq org-capture-templates
       '(("i" "Inbox")
@@ -88,6 +96,16 @@
   :after elfeed
   :init
   (elfeed-goodies/setup))
+
+(setq rmh-elfeed-org-files '((concat org-directory "/elfeed.org")))
+
+;;;; Installing utils:
+(use-package consult)
+
+(localleader-def
+ :states 'normal
+ :keymaps 'org-mode-map
+ "h" #'consult-org-heading)
 
 (provide 'org)
 ;;; org.el ends here
