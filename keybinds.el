@@ -64,7 +64,10 @@
   "n" '(:ignore t :wk "notes")
   "b" '(:keymap my/global-buffer-map :wk "buffer")
   ; TODO: If "o" prefix increase size, we should put it on a keymap.
-  "op" #'dired-jump)
+  "o" '(:ignore t :wk "open")
+  "o-" #'dired-jump
+  "," #'persp-switch-to-buffer
+  "SPC" #'projectile-find-file)
 
 (defvar localleader-buffer-map (make-sparse-keymap))
 (general-define-key
