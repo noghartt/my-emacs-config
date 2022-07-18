@@ -50,19 +50,43 @@
 
 (setq org-directory "~/org-backup"
       org-default-notes-file (concat org-directory "/inbox.org")
-      org-roam-directory (concat org-directory "/notes"))
+      org-roam-directory (concat org-directory "/notes")
+      org-roam-dailies-directory (concat org-directory "/dailies"))
 
 (setq org-capture-templates
       '(("i" "Inbox")
-        ("ii" "Tasks" entry (file+headline "inbox.org"
-                                             "Tasks")
-         "** TODO %?\n"
+	("it" "Tasks")
+        ("itt" "Just a simple tasks" entry
+	 (file+headline "inbox.org"
+                        "Tasks")
+         "* TODO %?\n"
          :prepend t
-         :unarrowed t)
+         :unarrowed t
+	 :refile-targets (("inbox.org" :maxlevel . 6)))
+	("its" "Scheduled task" entry
+	 (file+headline "inbox.org"
+			"Tasks")
+	 "* TODO %^{Task title}\nSCHEDULED: %^{Date}T\n%?")
         ("in" "Notebook" entry (file+headline "inbox.org"
                                              "Notebook")
-         "** %^{Notebook title}\n%?"
-         :unarrowed t)))
+         "* %^{Notebook title}\n%?"
+         :unarrowed t)
+	("il" "For later" entry
+	 (file+headline "inbox.org"
+			"For later")
+	 :unarrowed t)))
+
+;; TODO: Add roam dailies directory as agenda files
+(setq org-agenda-files `(,(concat org-directory "/inbox.org")))
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")))
+
+(setq org-refile-targets '((nil :maxlevel . 3)
+			   (org-agenda-files :maxlevel . 3))
+      org-refile-allow-creating-parent-nodes t
+      org-refile-use-outline-path 'file
+      org-outline-path-complete-in-steps nil)
 
 ;;;; Set keybinds:
 (defvar my/global-org-roam-mode-map (make-sparse-keymap))
