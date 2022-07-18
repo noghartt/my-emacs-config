@@ -1,6 +1,9 @@
 * Things to do
-** Packages [0/3]
-*** TODO Magit
-*** TODO Evil
-*** TODO Org-mode [0/1]
-- [ ] org-roam
+** Packages [0/2]
+- [ ] undo-tree
+- [-] Git [1/2]
+  - [X] Magit
+  - [ ] Git Gutter
+- Org-mode [1/1]
+  - [X] org-roam
+   
