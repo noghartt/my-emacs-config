@@ -110,6 +110,11 @@
 ; Add line number column
 (global-display-line-numbers-mode 1)
 
+; Add undo-tree
+(use-package undo-tree
+  :init
+  (undo-tree-mode))
+
 ;;;; Installing typescript-mode:
 (use-package typescript-mode
   :after tree-sitter
