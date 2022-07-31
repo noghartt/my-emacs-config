@@ -29,14 +29,16 @@
 (setq straight-use-package-by-default t)
 
 ;;;; Load some internal files:
-(load-file "keybinds.el")
-(load-file "org.el")
-(load-file "magit.el")
-(require 'keybinds)
-(require 'org)
-(require 'magit)
+(use-package keybinds
+  :straight nil
+  :load-path "site-lisp/keybinds")
+(use-package org
+  :straight nil
+  :load-path "site-lisp/org")
+(use-package magit
+  :straight nil
+  :load-path "site-lisp/magit")
 
-;;;; Installing vertico:
 (use-package vertico
   :init
   (vertico-mode))
