@@ -79,6 +79,11 @@
 (use-package tree-sitter-langs
   :after tree-sitter)
 
+;;;; Installing projectile:
+(use-package projectile
+  :init
+  (projectile-mode t))
+
 ;;;; Other things:
 (setq-default fill-column 80)
 
