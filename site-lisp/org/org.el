@@ -91,8 +91,13 @@ NAME, ARGLIST, and BODY are the same as `defun', `defun*', `defmacro', and
 
 (add-to-list 'org-mode-hook (lambda () (org-indent-mode t)))
 
-(setq org-modules '(org-habit
-                    org-protocol))
+;; (setq org-modules '(org-habit
+;;                     org-protocol))
+
+(setq org-habit-show-all-today nil
+      org-habit-graph-column 40
+      org-habit-preceding-days 50
+      org-habit-following-days 7)
 
 (eval-after-load 'org
   '(org-load-modules-maybe t))
@@ -138,6 +143,12 @@ NAME, ARGLIST, and BODY are the same as `defun', `defun*', `defmacro', and
       org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
 
+;;;###autoload
+(defun my/goto-org-inbox-file ()
+  "Go to `org-directory`/inbox.org file."
+  (interactive)
+  (find-file (expand-file-name "inbox.org" org-directory)))
+
 ;;;; Set keybinds:
 (defvar my/global-org-roam-mode-map (make-sparse-keymap))
 (general-define-key
@@ -150,7 +161,9 @@ NAME, ARGLIST, and BODY are the same as `defun', `defun*', `defmacro', and
 (general-define-key
  :keymaps 'my/global-org-mode-map
  "n" #'org-capture
- "r" my/global-org-roam-mode-map) ; TODO: Add `:wk' in this map as "roam"
+ "r" my/global-org-roam-mode-map ; TODO: Add `:wk' in this map as "roam"
+ ;; TODO: Understand why this `:wk' isn't working.
+ "i" '(my/goto-org-inbox-file :wk "Test"))
 
 (leader-def
  :states 'normal

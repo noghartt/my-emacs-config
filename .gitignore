@@ -1,0 +1,8 @@
+straight/
+transient/
+
+# Some files
+org-roam.db
+history
+bookmarks
+projectile-bookmarks.eld
